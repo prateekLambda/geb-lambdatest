@@ -1,0 +1,62 @@
+apply plugin: "idea"
+apply plugin: "geb-lambdatest"
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'org.gebish:geb-gradle:3.3'
+    }
+}
+
+allprojects {
+    apply plugin: "groovy"
+}
+
+group 'org.lambdatest'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+ext {
+    gebVersion = '3.3'
+    seleniumVersion = '3.14.0'
+}
+
+dependencies {
+    // If using Spock, need to depend on geb-spock
+    testCompile "org.gebish:geb-spock:$gebVersion"
+    compile "org.spockframework:spock-core:0.7-groovy-2.0"
+    compile "org.seleniumhq.selenium:selenium-firefox-driver:$seleniumVersion"
+    compile "org.seleniumhq.selenium:selenium-chrome-driver:$seleniumVersion"
+}
+
+repositories {
+    jcenter()
+}
+
+//test task will be used when you run the tests locally, not with cloud
+test {
+    systemProperty "geb.build.reportsDir", reporting.file("$project.buildDir/test-results/$name/geb")
+    systemProperty "geb.env", 'firefox' //select an env/browser for local testing
+}
+
+lambdaTest {
+    browsers{
+        firefox_windows
+    }
+    task {
+//            testClassesDir = rootProject.test.testClassesDir
+//            testSrcDirs = rootProject.test.testSrcDirs
+//            classpath = rootProject.test.classpath
+        systemProperty "geb.build.reportsDir", reporting.file("$project.buildDir/test-results/$name/geb")
+    }
+    account {
+        username = 'lambdatest username'
+        accessKey = 'lambdatest access token'
+    }
+    tunnelOps {
+        tunnelName = 'default'
+    }
+}

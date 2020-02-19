@@ -1,0 +1,5 @@
+include 'chrome'
+include 'firefox'
+rootProject.name = 'geb-lambdatest'
+
+
