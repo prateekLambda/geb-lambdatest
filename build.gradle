@@ -57,6 +57,6 @@ lambdaTest {
         accessKey = 'lambdatest access token'
     }
     tunnelOps {
-        tunnelName = 'default'
+        tunnelName = 'geb-'+UUID.randomUUID().toString()
     }
 }
