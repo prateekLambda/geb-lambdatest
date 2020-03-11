@@ -58,6 +58,6 @@ lambdaTest {
     }
     tunnelOps {
         tunnelName = 'geb-'+UUID.randomUUID().toString()
-        nows
+        nows = true
     }
 }
