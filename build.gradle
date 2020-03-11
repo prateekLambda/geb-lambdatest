@@ -53,8 +53,8 @@ lambdaTest {
         systemProperty "geb.build.reportsDir", reporting.file("$project.buildDir/test-results/$name/geb")
     }
     account {
-        username = 'lambdatest username'
-        accessKey = 'lambdatest access token'
+        username = 'prateeks'
+        accessKey = 'IuCSesD83A7LsTFzEKS0Lb6tzvEfBQ38DMkFTEpudatxxxsdjH'
     }
     tunnelOps {
         tunnelName = 'geb-'+UUID.randomUUID().toString()
