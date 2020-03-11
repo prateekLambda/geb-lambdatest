@@ -24,7 +24,7 @@ if (lambdaTestBrowser) {
         caps = new DesiredCapabilities()
         caps.setCapability(CapabilityType.PLATFORM_NAME,"win10")
         caps.setCapability(CapabilityType.BROWSER_NAME,"firefox")
-        caps.setCapability(CapabilityType.BROWSER_VERSION,"latest")
+        caps.setCapability(CapabilityType.BROWSER_VERSION,"72.0")
         caps.setCapability("build", "geb-lambdatest")
         def tunnelName = System.getenv("GEB_LAMBDATEST_TUNNELID")
         if(tunnelName != "null"){
